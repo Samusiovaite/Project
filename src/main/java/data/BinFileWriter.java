@@ -53,12 +53,14 @@ public class BinFileWriter implements Runnable {
     public void write(Object object) throws IOException{
         try {
             System.out.println("Writing...");
-            File targetDir=new File(this.dir);
-            File targetFile=new File(targetDir, fileName);
+            File targetDir = new File(this.dir);
+            File targetFile = new File(targetDir, fileName);
             FileOutputStream file = new FileOutputStream(targetFile, true);
             try (ObjectOutputStream output = new ObjectOutputStream(file)) {
                 byte[] bb = this.getByte(object);
                 output.writeObject(bb);
+//                output.write('\n');
+//                output.flush();
             }
         }
         catch (IOException e) {

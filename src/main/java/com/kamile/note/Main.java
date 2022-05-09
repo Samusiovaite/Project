@@ -69,9 +69,9 @@ public class Main {
         Note note = new Note("Namu darbas", "padaryti Op laboratorinį darbą");
         
         BinFileReader reader = new BinFileReader("data");
-        BinFileWriter writer = new BinFileWriter("ne.bin", "data");
+        BinFileWriter writer = new BinFileWriter("asdf.bin", "data");
         //writer.setWritable(contact);
-        writer.setWritable(contact);
+        writer.setWritable(note);
 //        Thread thread1 = new Thread(writer);
 //        thread1.start();
         

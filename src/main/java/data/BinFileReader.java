@@ -65,53 +65,45 @@ public class BinFileReader implements Runnable {
     
  
     
-   public Object readBytes() throws FileNotFoundException, IOException, ClassNotFoundException{
-        byte[] readBytes = null;           //baitų masyvas
-        System.out.println("Reading...");
-        File directory = new File(this.dir);
-        String[] fileNames = directory.list();
-        int count = fileNames.length;
-        ArrayList<Object> o  = new ArrayList(); 
+   public ArrayList<Object> readBytes() throws FileNotFoundException, IOException, ClassNotFoundException{
+       System.out.println("Reading...");
+       byte[] readBytes;           //baitų masyvas
+       File directory = new File(this.dir);
+       String[] fileNames = directory.list();
+       int count = fileNames.length;
+       ArrayList<Object> o  = new ArrayList();
         
         for (int i = 0; i < count; ++i){
             File file = new File(directory, fileNames[i]);
             FileInputStream fileStream = new FileInputStream(file);
-            
-            try (ObjectInputStream objStream = new ObjectInputStream(fileStream)) {
-                readBytes = (byte[]) objStream.readObject();    
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-            }
-            
-            ByteArrayInputStream bis = new ByteArrayInputStream(readBytes);
-            ObjectInput in = null;
-           
+            ByteArrayInputStream bis;
+            ObjectInput in;
+            boolean cont = true;
             try {
+                while(cont){
+                    ObjectInputStream objStream = new ObjectInputStream(fileStream);
+                    readBytes = (byte[]) objStream.readObject();
+                    bis = new ByteArrayInputStream(readBytes);
                     in = new ObjectInputStream(bis);
                     o.add(in.readObject());
-                     
-            } catch(IOException | ClassNotFoundException e) {} 
-            finally {
-                    try {
-                        if (in != null) {
-                            in.close();
-                        }
-                    } catch (IOException ex) {}
+                    in.close();
+                }
+            } catch (IOException | ClassNotFoundException e) {
+//                System.out.println(e.getMessage());
             }
-
-           
-           
-            //System.out.println(con.getFirstName());
-            }
-            return o;
+        }
+        return o;
    }
    
 
     @Override
     public void run() {
         try {
-            //this.readBytes();
-            System.out.println(this.readBytes());
+            ArrayList<Object> objects = this.readBytes();
+            for(int i = 0; i < objects.size(); ++i) {
+                System.out.println(objects.get(i).toString());
+                System.out.println("\n");
+            }
         } catch (IOException | ClassNotFoundException ex) {
         }
     }
