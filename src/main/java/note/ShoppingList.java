@@ -4,11 +4,13 @@
  */
 package note;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kamilė
  */
-public class ShoppingList extends SubjectList{
+public class ShoppingList extends SubjectList implements Serializable {
     private String title;
     private String description;
     private String storeName;

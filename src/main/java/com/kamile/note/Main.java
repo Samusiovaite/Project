@@ -5,14 +5,15 @@
 package com.kamile.note;
 
 
+
 import contact.Address;
 import contact.Contact;
-import contact.ContactFactory;
-import data.FileIsDirectoryException;
-import data.IncorrectFileNameException;
-import data.ReaderInputFile;
+import data.BinFileReader;
+import data.BinFileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import note.CheckListElement;
+import note.Note;
 import note.ShoppingList;
 
 /**
@@ -20,7 +21,7 @@ import note.ShoppingList;
  * @author Kamilė
  */
 public class Main {
-     public static void main(String[] args) {
+     public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
        
         CheckListElement checkList = new CheckListElement(false, "Duona");
         CheckListElement checkList1 = new CheckListElement(false, "Jogurtas");
@@ -59,50 +60,25 @@ public class Main {
         System.out.println(shoppingList.toString());
         System.out.println("_________________");
         
-        ReaderInputFile reader = new ReaderInputFile("Contact");
-         try {
-             reader.read();
-        } catch(FileIsDirectoryException e) {
-            System.out.println(e.toString());
-            System.out.println(e.getMessage());
-            System.out.println("File Name is: " + e.getFileName());
-        } catch(IncorrectFileNameException e) {
-            System.out.println(e.getMessage());
-            System.out.println("File Name is: " + e.getFileName());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-         }
-         
-         
-         Address address = new Address("Lietuva", "Vilnius", "Savanoriu prospektas",
+        Address address = new Address("Lietuva", "Vilnius", "Savanoriu prospektas",
                                        6, 20106);
-         Contact contact1 = new Contact("Kamile", "Samusiovaite", "60569664",
-                                      "kamilesamusiovaite@gmail.com", "2002-02-12",
+
+        Contact contact = new Contact("Kamile", "Samusiovaite", "60569664",
+                                      "kamilesamusiovaite", "2002-02-12",
                                        address);
-         
-//        try{
-//            Object object = contact1.clone();
-//            Contact contact2 = (Contact)object;
-       
-            Contact contact2 = new ContactFactory().create(contact1);
-
-            contact2.setFirstName("Emilija");
-            contact2.setPhoneNumber("60731937");
-            contact2.setEmail("emilijasamusiovaite@gmail.com");
-            contact2.setDateOfBirthday("2000-10-30");
-            
-            contact2.getAddress().setCity("Kaunas");
-            
-            System.out.println("_________________");
-            System.out.println("Original Contact object: ");
-            System.out.println(contact1);
-            System.out.println("_________________");
-            System.out.println("Cloned Contact object: ");
-            System.out.println(contact2);
-            System.out.println("_________________");
-//        } catch(CloneNotSupportedException e ){
-//            System.out.println(e.getMessage());
-//        }
-
+        Note note = new Note("Namu darbas", "padaryti Op laboratorinį darbą");
+        
+        BinFileReader reader = new BinFileReader("data");
+        BinFileWriter writer = new BinFileWriter("ne.bin", "data");
+        //writer.setWritable(contact);
+        writer.setWritable(contact);
+//        Thread thread1 = new Thread(writer);
+//        thread1.start();
+        
+        Thread thread2 = new Thread(reader);
+        thread2.start();
+        
+        
+        
      }
 }

@@ -9,7 +9,7 @@ import java.time.Period;
 
 /**
  *
- * @author Kamilė
+ * @author Kamil?
  */
 
 public class Contact implements Cloneable, Serializable {
@@ -49,7 +49,7 @@ public class Contact implements Cloneable, Serializable {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     //Functions that return values to a contact-type variable 
     //The get method returns the value of the variable
     public String getFirstName(){

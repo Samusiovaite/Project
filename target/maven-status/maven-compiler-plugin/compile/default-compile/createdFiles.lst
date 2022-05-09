@@ -2,13 +2,10 @@ data\IncorrectFileNameException.class
 note\CheckListElement.class
 note\Note.class
 note\ShoppingList.class
-data\ReaderInputFile.class
 calendar\Concert.class
 note\Remarkable.class
 calendar\Event.class
 contact\Contact.class
 note\SubjectList.class
-com\kamile\note\Main.class
 note\Checkable.class
-.netbeans_automatic_build
 calendar\Birthday.class

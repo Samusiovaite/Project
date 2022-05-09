@@ -5,14 +5,15 @@
 package note;
        
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
- * @author Kamilė
+ * @author KamilÄ—
  */
-public abstract class SubjectList implements Checkable{
-    protected ArrayList<CheckListElement> checkList  = new ArrayList<>(); 
+public abstract class SubjectList implements Checkable, Serializable {
+    protected ArrayList<CheckListElement> checkList  = new ArrayList(); 
 
     SubjectList(){}
     
