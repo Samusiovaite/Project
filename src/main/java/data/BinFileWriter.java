@@ -12,13 +12,15 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
+
 /**
  *
  * @author Kamilė
  */
+
 public class BinFileWriter implements Runnable {
     private String fileName;
-    private Object writable;
+    private Object writable;    
     private String dir; 
     
     public BinFileWriter(String fileName, String dir){
@@ -50,46 +52,46 @@ public class BinFileWriter implements Runnable {
         this.dir = input; 
     }
     
-    public void write(Object object) throws IOException{
+    public void write(Object object) throws Exception{
         try {
             System.out.println("Writing...");
-            File targetDir = new File(this.dir);
-            File targetFile = new File(targetDir, fileName);
-            FileOutputStream file = new FileOutputStream(targetFile, true);
+            File targetDir = new File(this.dir);   
+            File targetFile = new File(targetDir, fileName);  
+            FileOutputStream file = new FileOutputStream(targetFile, true); 
             try (ObjectOutputStream output = new ObjectOutputStream(file)) {
-                byte[] bb = this.getByte(object);
-                output.writeObject(bb);
-//                output.write('\n');
-//                output.flush();
+                byte[] byteArray = this.getByte(object);
+                output.writeObject(byteArray); 
             }
         }
         catch (IOException e) {
             e.getStackTrace();
         }
     }
-    
-    private byte[] getByte(Object object) throws IOException{
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-	ObjectOutputStream out;
-	byte[] bytes = null;
-	try {
-            out = new ObjectOutputStream(bos);   
-            out.writeObject(object);
-            out.flush();
-            bytes = bos.toByteArray();
-            bos.close();
 
-	}  catch (IOException ex) {
+    private byte[] getByte(Object object) throws IOException{
+        ByteArrayOutputStream byteArrayOutputSream = new ByteArrayOutputStream();
+	ObjectOutputStream outputStream; 
+	byte[] bytes = null; 
+	try {
+            outputStream = new ObjectOutputStream(byteArrayOutputSream);   
+            outputStream.writeObject(object);
+            outputStream.flush();
+            bytes = byteArrayOutputSream.toByteArray(); 
+            byteArrayOutputSream.close(); 
+
+	}  catch (IOException ex) { 
             System.out.println(ex.getMessage());
         }
         return bytes;
     }
 
+    
     @Override
     public void run() {
         try {
-            this.write((Object) this.writable);
-        } catch (IOException ex) {
+            this.write((Object) this.writable); 
+        }   catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }

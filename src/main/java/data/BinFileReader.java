@@ -3,11 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package data;
-
-import contact.Contact;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 
 
@@ -18,15 +16,10 @@ import java.util.Arrays;
 
 public class BinFileReader implements Runnable {
     private String fileName; 
-    private String dir; 
+    private String dir;        
     
     public BinFileReader(String dir){
-        this.dir = dir; 
-    }
-    
-    public BinFileReader(String dir, String fileName){
         this.dir = dir;
-        this.fileName = fileName;
     }
     
     public String getFileName(){
@@ -44,67 +37,50 @@ public class BinFileReader implements Runnable {
     public void setDirName(String input){
         this.dir = input; 
     }
-    
-    public void read() throws IncorrectFileNameException, IOException, FileNotFoundException {
-        File file = new File(this.fileName);
-        BufferedReader bufferedReader = null;
 
-        if (file.exists() && !file.isDirectory()) {
-            bufferedReader = new BufferedReader(new FileReader(file));
-        } else if (file.isDirectory()) {
-            throw new FileIsDirectoryException("Incorrect filename.", this.fileName);
-        } else {
-            throw new IncorrectFileNameException("Incorrect filename.", this.fileName);
-        }
-
-        String curLine;
-        while ((curLine = bufferedReader.readLine()) != null){
-            System.out.println(curLine);
-        }
-    }
-    
- 
-    
-   public ArrayList<Object> readBytes() throws FileNotFoundException, IOException, ClassNotFoundException{
+   public ArrayList<Object> readBytes() throws Exception{
        System.out.println("Reading...");
-       byte[] readBytes;           //baitų masyvas
-       File directory = new File(this.dir);
+       byte[] readBytes;           
+       File directory = new File(this.dir); 
        String[] fileNames = directory.list();
        int count = fileNames.length;
-       ArrayList<Object> o  = new ArrayList();
+       ArrayList<Object> obectArray  = new ArrayList();
         
-        for (int i = 0; i < count; ++i){
+        for (int i = 0; i < count; ++i){ 
             File file = new File(directory, fileNames[i]);
-            FileInputStream fileStream = new FileInputStream(file);
-            ByteArrayInputStream bis;
-            ObjectInput in;
-            boolean cont = true;
+            FileInputStream fileStream;
+            fileStream = new FileInputStream(file);
+            ByteArrayInputStream byteArrayInputStream;  
+            ObjectInput objectInput; 
+           
             try {
-                while(cont){
+                while(true){
                     ObjectInputStream objStream = new ObjectInputStream(fileStream);
                     readBytes = (byte[]) objStream.readObject();
-                    bis = new ByteArrayInputStream(readBytes);
-                    in = new ObjectInputStream(bis);
-                    o.add(in.readObject());
-                    in.close();
+                    byteArrayInputStream = new ByteArrayInputStream(readBytes);
+                    objectInput = new ObjectInputStream(byteArrayInputStream);
+                    obectArray.add(objectInput.readObject()); 
+            
                 }
-            } catch (IOException | ClassNotFoundException e) {
-//                System.out.println(e.getMessage());
             }
+            catch (IOException | ClassNotFoundException e) {
+                System.out.println("file is readed");
+            }
+            fileStream.close();
         }
-        return o;
+        return obectArray; 
    }
    
 
     @Override
     public void run() {
         try {
-            ArrayList<Object> objects = this.readBytes();
-            for(int i = 0; i < objects.size(); ++i) {
-                System.out.println(objects.get(i).toString());
+            ArrayList<Object> objects = this.readBytes(); 
+            for(int i = 0; i < objects.size(); ++i) {  
+                System.out.println(objects.get(i).toString()); 
                 System.out.println("\n");
             }
-        } catch (IOException | ClassNotFoundException ex) {
+        } catch (Exception ex) {
         }
     }
 }
