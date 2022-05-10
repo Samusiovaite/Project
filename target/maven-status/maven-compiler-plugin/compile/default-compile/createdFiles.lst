@@ -1,4 +1,6 @@
 data\IncorrectFileNameException.class
+note\Checkable.class
+calendar\Birthday.class
 note\CheckListElement.class
 note\Note.class
 note\ShoppingList.class
@@ -7,5 +9,3 @@ note\Remarkable.class
 calendar\Event.class
 contact\Contact.class
 note\SubjectList.class
-note\Checkable.class
-calendar\Birthday.class

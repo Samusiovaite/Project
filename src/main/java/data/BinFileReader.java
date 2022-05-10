@@ -40,7 +40,6 @@ public class BinFileReader implements Runnable {
 
    public ArrayList<Object> readBytes() throws Exception{
        System.out.println("Reading...");
-       byte[] readBytes;           
        File directory = new File(this.dir); 
        String[] fileNames = directory.list();
        int count = fileNames.length;
@@ -49,18 +48,11 @@ public class BinFileReader implements Runnable {
         for (int i = 0; i < count; ++i){ 
             File file = new File(directory, fileNames[i]);
             FileInputStream fileStream;
-            fileStream = new FileInputStream(file);
-            ByteArrayInputStream byteArrayInputStream;  
-            ObjectInput objectInput; 
-           
+            fileStream = new FileInputStream(file);           
             try {
                 while(true){
                     ObjectInputStream objStream = new ObjectInputStream(fileStream);
-                    readBytes = (byte[]) objStream.readObject();
-                    byteArrayInputStream = new ByteArrayInputStream(readBytes);
-                    objectInput = new ObjectInputStream(byteArrayInputStream);
-                    obectArray.add(objectInput.readObject()); 
-            
+                    obectArray.add(objStream.readObject());
                 }
             }
             catch (IOException | ClassNotFoundException e) {

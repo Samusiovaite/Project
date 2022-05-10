@@ -36,13 +36,10 @@ public class Main {
         Note note1 = new Note("koncertas", "Nusipirkti bilietus i koncerta");
         
         BinFileReader reader = new BinFileReader("data"); 
-        BinFileWriter writer = new BinFileWriter("note.bin", "data");
-        writer.setWritable(note1);
+        BinFileWriter writer = new BinFileWriter("contact.bin", "data");
+        writer.setWritable(contact);
         
         Thread thread = new Thread(reader);
         thread.start();
-        
-        
-        
      }
 }

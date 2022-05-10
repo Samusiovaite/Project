@@ -137,6 +137,6 @@ public class Contact implements Cloneable, Serializable {
     public String toString(){
         return "Contact: \n" + "First Name: " + this.firstName + "\nLast Name: " + this.lastName + 
         "\nPhone Number: " + this.phoneNumberPrefix + this.phoneNumber + "\nEmail Address: " + 
-        this.email + this.emailPostfix + "\nAge: " + this.calculateAge() + "\nAddress: " + address.toString();
+        this.email + this.emailPostfix + "\nDOB: " + this.dateOfBirthday + "\nAddress: " + address.toString();
     }
 }

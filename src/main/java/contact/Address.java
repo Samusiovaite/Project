@@ -73,7 +73,7 @@ public class Address implements Cloneable, Serializable {
     
     @Override
     public String toString(){
-        return "Address: " + "\nCoutry: " + this.country + "\nCity: " + this.city + 
+        return  "\nCoutry: " + this.country + "\nCity: " + this.city + 
                 "\nStreet Name: " + this.streetName + "\nHouse or Apartament Number: " +
                 this.houseOrApartamentNumber + "\nZip Code: " + this.zipCode; 
     }
