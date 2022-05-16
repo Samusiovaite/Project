@@ -548,6 +548,7 @@ public class GUICalendar extends javax.swing.JFrame {
             }
         });
 
+        delete.setBackground(new java.awt.Color(255, 204, 204));
         delete.setText("DELETE");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

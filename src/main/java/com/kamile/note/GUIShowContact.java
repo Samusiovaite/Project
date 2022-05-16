@@ -109,6 +109,7 @@ public class GUIShowContact extends javax.swing.JFrame {
             }
         });
 
+        edit.setBackground(new java.awt.Color(255, 204, 204));
         edit.setText("EDIT");
         edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
