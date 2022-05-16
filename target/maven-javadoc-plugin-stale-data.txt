@@ -1,0 +1,72 @@
+@options
+@packages
+@argfile
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/kamil/Desktop/note/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2022. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/kamil/Desktop/note/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'note 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'note 1.0-SNAPSHOT API'
+calendar
+com.kamile.note
+contact
+data
+note
+'C:/Users/kamil/Desktop/note/src/main/java/calendar/Birthday.java'
+'C:/Users/kamil/Desktop/note/src/main/java/calendar/Concert.java'
+'C:/Users/kamil/Desktop/note/src/main/java/calendar/Event.java'
+'C:/Users/kamil/Desktop/note/src/main/java/com/kamile/note/GUICalendar.java'
+'C:/Users/kamil/Desktop/note/src/main/java/com/kamile/note/GUIContact.java'
+'C:/Users/kamil/Desktop/note/src/main/java/com/kamile/note/GUIMain.java'
+'C:/Users/kamil/Desktop/note/src/main/java/com/kamile/note/GUINote.java'
+'C:/Users/kamil/Desktop/note/src/main/java/com/kamile/note/GUIShowContact.java'
+'C:/Users/kamil/Desktop/note/src/main/java/com/kamile/note/Main.java'
+'C:/Users/kamil/Desktop/note/src/main/java/contact/AbstractFactory.java'
+'C:/Users/kamil/Desktop/note/src/main/java/contact/Address.java'
+'C:/Users/kamil/Desktop/note/src/main/java/contact/Contact.java'
+'C:/Users/kamil/Desktop/note/src/main/java/contact/ContactFactory.java'
+'C:/Users/kamil/Desktop/note/src/main/java/data/BinFileReader.java'
+'C:/Users/kamil/Desktop/note/src/main/java/data/BinFileWriter.java'
+'C:/Users/kamil/Desktop/note/src/main/java/data/FileIsDirectoryException.java'
+'C:/Users/kamil/Desktop/note/src/main/java/data/IncorrectFileNameException.java'
+'C:/Users/kamil/Desktop/note/src/main/java/note/Checkable.java'
+'C:/Users/kamil/Desktop/note/src/main/java/note/CheckListElement.java'
+'C:/Users/kamil/Desktop/note/src/main/java/note/Note.java'
+'C:/Users/kamil/Desktop/note/src/main/java/note/Remarkable.java'
+'C:/Users/kamil/Desktop/note/src/main/java/note/ShoppingList.java'
+'C:/Users/kamil/Desktop/note/src/main/java/note/SubjectList.java'
+C:\Users\kamil\Desktop\note\src\main\java = 1650134591562
+C:\Users\kamil\Desktop\note\target\site\apidocs\allclasses-index.html = 1652731441646
+C:\Users\kamil\Desktop\note\target\site\apidocs\allpackages-index.html = 1652731441648
+C:\Users\kamil\Desktop\note\target\site\apidocs\element-list = 1652731441460
+C:\Users\kamil\Desktop\note\target\site\apidocs\help-doc.html = 1652731441681
+C:\Users\kamil\Desktop\note\target\site\apidocs\index-all.html = 1652731441674
+C:\Users\kamil\Desktop\note\target\site\apidocs\index.html = 1652731441630
+C:\Users\kamil\Desktop\note\target\site\apidocs\jquery-ui.overrides.css = 1652731441708
+C:\Users\kamil\Desktop\note\target\site\apidocs\member-search-index.js = 1652731441652
+C:\Users\kamil\Desktop\note\target\site\apidocs\module-search-index.js = 1652731441649
+C:\Users\kamil\Desktop\note\target\site\apidocs\overview-summary.html = 1652731441676
+C:\Users\kamil\Desktop\note\target\site\apidocs\overview-tree.html = 1652731441627
+C:\Users\kamil\Desktop\note\target\site\apidocs\package-search-index.js = 1652731441650
+C:\Users\kamil\Desktop\note\target\site\apidocs\script.js = 1652731441684
+C:\Users\kamil\Desktop\note\target\site\apidocs\search.js = 1652731441687
+C:\Users\kamil\Desktop\note\target\site\apidocs\serialized-form.html = 1652731441537
+C:\Users\kamil\Desktop\note\target\site\apidocs\stylesheet.css = 1652731441683
+C:\Users\kamil\Desktop\note\target\site\apidocs\tag-search-index.js = 1652731441653
+C:\Users\kamil\Desktop\note\target\site\apidocs\type-search-index.js = 1652731441651

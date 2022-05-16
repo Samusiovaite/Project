@@ -6,9 +6,6 @@ package data;
 import java.io.*;
 import java.util.ArrayList;
 
-
-
-
 /**
  *
  * @author Kamilė
@@ -63,15 +60,20 @@ public class BinFileReader implements Runnable {
         return obectArray; 
    }
    
+   private volatile ArrayList<Object> objects;
+   
+    public ArrayList<Object> getObjects(){
+        return this.objects;
+    }
+
+    public void setObjects(ArrayList<Object> input){
+        this.objects = input; 
+    }
 
     @Override
     public void run() {
         try {
-            ArrayList<Object> objects = this.readBytes(); 
-            for(int i = 0; i < objects.size(); ++i) {  
-                System.out.println(objects.get(i).toString()); 
-                System.out.println("\n");
-            }
+            this.objects = this.readBytes(); 
         } catch (Exception ex) {
         }
     }

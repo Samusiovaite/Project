@@ -4,14 +4,11 @@
  */
 package data;
 
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-
-
+import java.util.ArrayList;
 
 /**
  *
@@ -56,7 +53,7 @@ public class BinFileWriter implements Runnable {
         try {
             System.out.println("Writing...");
             File targetDir = new File(this.dir);   
-            File targetFile = new File(targetDir, fileName);  
+            File targetFile = new File(targetDir, fileName);
             FileOutputStream file = new FileOutputStream(targetFile, true); 
             try (ObjectOutputStream output = new ObjectOutputStream(file)) {
                 output.writeObject(object); 
@@ -64,6 +61,16 @@ public class BinFileWriter implements Runnable {
         }
         catch (IOException e) {
             e.getStackTrace();
+        }
+    }
+    
+    public void overwriteFile(ArrayList<Object> objects) throws Exception {
+        File targetDir = new File(this.dir);   
+        File targetFile = new File(targetDir, fileName);
+        targetFile.delete();
+
+        for(int i = 0; i < objects.size(); ++i) {
+            this.write(objects.get(i));
         }
     }
     

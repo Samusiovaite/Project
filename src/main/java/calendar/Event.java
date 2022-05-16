@@ -11,10 +11,10 @@ import java.time.LocalDateTime;
  */
 
 public class Event implements Serializable {
-    protected String title;
-    protected String description;
-    protected LocalDateTime dateTime;
-    protected String place;
+    private String title;
+    private String description;
+    private LocalDateTime dateTime;
+    private String place;
     
     public Event() {}           //empty constructor
    

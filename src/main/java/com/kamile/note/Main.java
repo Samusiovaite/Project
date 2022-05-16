@@ -12,6 +12,8 @@ import data.BinFileReader;
 import data.BinFileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import note.Note;
 
 /**
@@ -41,5 +43,11 @@ public class Main {
         
         Thread thread = new Thread(reader);
         thread.start();
+         try {
+             thread.join();
+             System.out.println(reader.getObjects());
+         } catch (InterruptedException ex) {
+             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+         }
      }
 }
